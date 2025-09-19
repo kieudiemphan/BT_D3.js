@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #e8f5e9; /* xanh lá nhạt thay vì xám */
+    margin: 0;
+    font-size: 11px;
+    padding: 10px;
+}
+
+h1 {
+    color: #00695c; /* xanh ngọc đậm */
+    margin-bottom: 5px;
+}
+
+.chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.chart-box {
+    background: #ffffff; /* trắng tinh */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 150, 136, 0.2); /* đổ bóng xanh nhạt */
+    width: 380px;
+    text-align: center;
+    border: 1px solid #b2dfdb; /* viền xanh nhạt */
+}
+
+canvas {
+    max-width: 100%;
+    height: 230px;
+}
