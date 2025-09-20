@@ -1,132 +1,170 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trực quan hóa dữ liệu với D3.js</title>
-    <link rel="stylesheet" href="style.css"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Báo cáo Doanh số với D3.js</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f7f9fc;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+    .chart-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+    }
+    .chart-label {
+      flex: 0 0 60px;
+      font-weight: bold;
+      font-size: 20px;
+      color: #fff;
+      background: #3498db;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      margin-right: 15px;
+      height: fit-content;
+    }
+    .chart-card {
+      flex: 1;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      padding: 20px;
+    }
+    .chart-card h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #34495e;
+      border-left: 4px solid #3498db;
+      padding-left: 8px;
+    }
+    .chart {
+      min-height: 300px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Doanh số bán hàng theo Mặt hàng </h1>
-    <div id="Q1"></div> 
+  <h1>Báo cáo trực quan hóa dữ liệu</h1>
 
-    <h1>Doanh số bán hàng theo Nhóm hàng </h1>
-    <div id="Q2"></div> 
+  <div class="chart-row">
+    <div class="chart-label">Q1</div>
+    <div class="chart-card">
+      <h2>Doanh số theo Mặt hàng</h2>
+      <div id="Q1" class="chart"></div>
+    </div>
+  </div>
 
-    <h1>Doanh số bán hàng theo Tháng </h1>
-    <div id="Q3"></div> 
+  <div class="chart-row">
+    <div class="chart-label">Q2</div>
+    <div class="chart-card">
+      <h2>Doanh số theo Nhóm hàng</h2>
+      <div id="Q2" class="chart"></div>
+    </div>
+  </div>
 
-    <h1>Doanh số bán hàng trung bình theo Ngày trong tuần </h1>
-    <div id="Q4"></div>
+  <div class="chart-row">
+    <div class="chart-label">Q3</div>
+    <div class="chart-card">
+      <h2>Doanh số theo Tháng</h2>
+      <div id="Q3" class="chart"></div>
+    </div>
+  </div>
 
-    <h1>Doanh số bán hàng trung bình theo Ngày trong tháng </h1>
-    <div id="Q5"></div> 
+  <div class="chart-row">
+    <div class="chart-label">Q4</div>
+    <div class="chart-card">
+      <h2>Trung bình theo Ngày trong tuần</h2>
+      <div id="Q4" class="chart"></div>
+    </div>
+  </div>
 
-    <h1>Doanh số bán hàng trung bình theo Khung giờ </h1>
-    <div id="Q6"></div> 
+  <div class="chart-row">
+    <div class="chart-label">Q5</div>
+    <div class="chart-card">
+      <h2>Trung bình theo Ngày trong tháng</h2>
+      <div id="Q5" class="chart"></div>
+    </div>
+  </div>
 
-    <h1>Xác suất bán hàng theo Nhóm hàng </h1>
-    <div id="Q7"></div> 
+  <div class="chart-row">
+    <div class="chart-label">Q6</div>
+    <div class="chart-card">
+      <h2>Trung bình theo Khung giờ</h2>
+      <div id="Q6" class="chart"></div>
+    </div>
+  </div>
 
-    
-    <h1>Xác suất bán hàng của Nhóm hàng theo Tháng </h1>
-    <div id="Q8"></div> 
+  <div class="chart-row">
+    <div class="chart-label">Q7</div>
+    <div class="chart-card">
+      <h2>Xác suất theo Nhóm hàng</h2>
+      <div id="Q7" class="chart"></div>
+    </div>
+  </div>
 
-    <h1>Xác suất bán hàng của Mặt hàng theo Nhóm hàng </h1>
-    <div id="Q9"></div> 
+  <div class="chart-row">
+    <div class="chart-label">Q8</div>
+    <div class="chart-card">
+      <h2>Xác suất Nhóm hàng theo Tháng</h2>
+      <div id="Q8" class="chart"></div>
+    </div>
+  </div>
 
-    <h1>Xác suất bán hàng của Mặt hàng theo Nhóm hàng trong từng Tháng </h1>
-    <div id="Q10"></div> 
+  <div class="chart-row">
+    <div class="chart-label">Q9</div>
+    <div class="chart-card">
+      <h2>Xác suất Mặt hàng theo Nhóm hàng</h2>
+      <div id="Q9" class="chart"></div>
+    </div>
+  </div>
 
-    <h1>Phân phối Lượt mua hàng </h1>
-    <div id="Q11"></div> 
+  <div class="chart-row">
+    <div class="chart-label">Q10</div>
+    <div class="chart-card">
+      <h2>Xác suất Mặt hàng theo Nhóm hàng trong Tháng</h2>
+      <div id="Q10" class="chart"></div>
+    </div>
+  </div>
 
-    <h1>Phân phối mức chi trả của Khách hàng </h1>
-    <div id="Q12"></div> 
+  <div class="chart-row">
+    <div class="chart-label">Q11</div>
+    <div class="chart-card">
+      <h2>Phân phối Lượt mua hàng</h2>
+      <div id="Q11" class="chart"></div>
+    </div>
+  </div>
 
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+  <div class="chart-row">
+    <div class="chart-label">Q12</div>
+    <div class="chart-card">
+      <h2>Phân phối mức chi trả của Khách hàng</h2>
+      <div id="Q12" class="chart"></div>
+    </div>
+  </div>
 
-    <script src="data.js"></script>
-
-    <script src="Q1.js"></script>
-    <script src="Q2.js"></script>
-    <script src="Q3.js"></script>
-    <script src="Q4.js"></script>
-    <script src="Q5.js"></script>
-    <script src="Q6.js"></script>
-    <script src="Q7.js"></script>
-    <script src="Q8.js"></script>
-    <script src="Q9.js"></script>
-    <script src="Q10.js"></script>
-    <script src="Q11.js"></script>
-    <script src="Q12.js"></script>
-    
+  <!-- Scripts -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="data.js"></script>
+  <script src="Q1.js"></script>
+  <script src="Q2.js"></script>
+  <script src="Q3.js"></script>
+  <script src="Q4.js"></script>
+  <script src="Q5.js"></script>
+  <script src="Q6.js"></script>
+  <script src="Q7.js"></script>
+  <script src="Q8.js"></script>
+  <script src="Q9.js"></script>
+  <script src="Q10.js"></script>
+  <script src="Q11.js"></script>
+  <script src="Q12.js"></script>
 </body>
-=======
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trực quan hóa dữ liệu với D3.js</title>
-    <link rel="stylesheet" href="style.css"> 
-</head>
-<body>
-    <h1>Doanh số bán hàng theo Mặt hàng </h1>
-    <div id="Q1"></div> 
-
-    <h1>Doanh số bán hàng theo Nhóm hàng </h1>
-    <div id="Q2"></div> 
-
-    <h1>Doanh số bán hàng theo Tháng </h1>
-    <div id="Q3"></div> 
-
-    <h1>Doanh số bán hàng trung bình theo Ngày trong tuần </h1>
-    <div id="Q4"></div>
-
-    <h1>Doanh số bán hàng trung bình theo Ngày trong tháng </h1>
-    <div id="Q5"></div> 
-
-    <h1>Doanh số bán hàng trung bình theo Khung giờ </h1>
-    <div id="Q6"></div> 
-
-    <h1>Xác suất bán hàng theo Nhóm hàng </h1>
-    <div id="Q7"></div> 
-
-    
-    <h1>Xác suất bán hàng của Nhóm hàng theo Tháng </h1>
-    <div id="Q8"></div> 
-
-    <h1>Xác suất bán hàng của Mặt hàng theo Nhóm hàng </h1>
-    <div id="Q9"></div> 
-
-    <h1>Xác suất bán hàng của Mặt hàng theo Nhóm hàng trong từng Tháng </h1>
-    <div id="Q10"></div> 
-
-    <h1>Phân phối Lượt mua hàng </h1>
-    <div id="Q11"></div> 
-
-    <h1>Phân phối mức chi trả của Khách hàng </h1>
-    <div id="Q12"></div> 
-
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-
-    <script src="data.js"></script>
-
-    <script src="Q1.js"></script>
-    <script src="Q2.js"></script>
-    <script src="Q3.js"></script>
-    <script src="Q4.js"></script>
-    <script src="Q5.js"></script>
-    <script src="Q6.js"></script>
-    <script src="Q7.js"></script>
-    <script src="Q8.js"></script>
-    <script src="Q9.js"></script>
-    <script src="Q10.js"></script>
-    <script src="Q11.js"></script>
-    <script src="Q12.js"></script>
-    
-</body>
->>>>>>> 58ac05ed43662f8fa02625f84113d61deea9c445
 </html>
